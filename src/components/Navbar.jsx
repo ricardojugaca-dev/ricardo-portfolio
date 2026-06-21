@@ -23,14 +23,30 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMenuOpen]);
+
   return (
     <nav
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        isScrolled
+          ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
+          : "py-5"
       )}
     >
       <div className="container flex items-center justify-between">
+        {/* Logo */}
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
@@ -52,30 +68,36 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
-            <ThemeToggle />
-
+          <ThemeToggle />
         </div>
-        
 
-        {/* mobile nav */}
-
+        {/* mobile button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
+          className="md:hidden p-2 text-foreground z-50 relative"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
+        {/* mobile menu */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
+            "fixed inset-0 w-screen h-screen bg-background/95 backdrop-blur-md z-[9999]",
+            "flex flex-col items-center justify-center transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}
         >
+          {/* 🔴 BOTÓN X DENTRO DEL MENÚ */}
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="absolute top-6 right-6 text-foreground z-[10001]"
+          >
+            <X size={28} />
+          </button>
+
           <div className="flex flex-col space-y-8 text-xl">
             {navItems.map((item, key) => (
               <a
@@ -87,7 +109,8 @@ export const Navbar = () => {
                 {item.name}
               </a>
             ))}
-             <div className="flex justify-center">
+
+            <div className="flex justify-center">
               <ThemeToggle />
             </div>
           </div>
