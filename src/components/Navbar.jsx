@@ -38,32 +38,32 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled
-          ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
-          : "py-5"
-      )}
-    >
+        className={cn(
+          "fixed w-full z-40 transition-all duration-300",
+          isScrolled
+            ? "py-3 bg-background/60 backdrop-blur-xl backdrop-saturate-150 border-b border-white/10 shadow-lg"
+            : "py-5 bg-transparent"
+        )}
+      >
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> PedroTech </span>{" "}
+          <span className="text-primary/80 font-light ml-1">
+            <span className="text-foreground font-semibold tracking-wide"> PedroTech </span>{" "}
             Portfolio
           </span>
         </a>
 
         {/* desktop nav */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-10">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="relative text-foreground/70 hover:text-foreground transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
             >
               {item.name}
             </a>
@@ -74,7 +74,7 @@ export const Navbar = () => {
         {/* mobile button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50 relative"
+          className="md:hidden p-2 rounded-md hover:bg-white/10 transition-colors text-foreground z-50"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -83,7 +83,7 @@ export const Navbar = () => {
         {/* mobile menu */}
         <div
           className={cn(
-            "fixed inset-0 w-screen h-screen bg-background/95 backdrop-blur-md z-[9999]",
+            "fixed inset-0 w-screen h-screen bg-background/90 backdrop-blur-xl z-[9999]",
             "flex flex-col items-center justify-center transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
@@ -103,7 +103,7 @@ export const Navbar = () => {
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="text-foreground/70 hover:text-primary transition-colors duration-300  text-lg tracking-wide"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
