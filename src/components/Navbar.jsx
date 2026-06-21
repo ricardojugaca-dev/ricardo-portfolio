@@ -52,7 +52,7 @@ export const Navbar = () => {
           href="#hero"
         >
           <span className="text-primary/80 font-light ml-1">
-            <span className="text-foreground font-semibold tracking-wide"> PedroTech </span>{" "}
+            <span className="text-foreground font-semibold tracking-wide"> RicardoDev </span>{" "}
             Portfolio
           </span>
         </a>
