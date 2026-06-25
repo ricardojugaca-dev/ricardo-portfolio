@@ -1,91 +1,143 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
 
 export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-4"
+      className="relative min-h-screen flex items-center justify-center px-6"
     >
-      <div className="container max-w-6xl mx-auto z-10">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
-          {/* Left Column */}
-          <div className="text-left space-y-5 order-2 md:order-1">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-green-500/40 bg-green-500/10 text-green-400 text-sm font-medium">
-              🟢 Available for Work
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight">
-              <span className="opacity-0 animate-fade-in">
+      <div className="container max-w-5xl mx-auto text-center z-10">
+        
+        {/* Glow Background */}
+        <div className="relative">
+          <div className="absolute inset-0 bg-primary/30 blur-[120px]"></div>
+
+          {/* Title */}
+          <h1 className="relative text-5xl sm:text-6xl md:text-8xl font-black leading-none">
+            <div>
+              <span className="text-foreground">
                 Hi, I'm
               </span>
 
-              <span className="text-primary opacity-0 animate-fade-in-delay-1">
+              <span className="text-gradient">
                 {" "}Ricardo
               </span>
+            </div>
 
-              <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
+            <div className="mt-2">
+              <span className="text-gradient">
                 Garcia
               </span>
-            </h1>
-
-            <h2 className="text-xl md:text-2xl text-primary font-medium opacity-0 animate-fade-in-delay-2">
-              Software Engineer
-            </h2>
-
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl opacity-0 animate-fade-in-delay-3">
-              Software Engineer focused on ASP.NET Core, React and SQL Server.
-              I enjoy building practical web applications and continuously
-              improving my development skills through real-world projects.
-            </p>
-
-            <div className="pt-4 opacity-0 animate-fade-in-delay-4">
-              <a href="#projects" className="cosmic-button">
-                View My Work
-              </a>
             </div>
+        </h1>
+        </div>
 
-            {/* Social Buttons */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-6 opacity-0 animate-fade-in-delay-4">
-              <a
-                href="https://linkedin.com/in/TU_LINKEDIN"
-                target="_blank"
-                rel="noreferrer"
-                className="px-5 py-3 rounded-full border border-primary/30 hover:border-primary transition-all duration-300 hover:shadow-lg"
-              >
-                LinkedIn
-              </a>
+        {/* Description */}
+        <p className="mt-10 max-w-2xl mx-auto text-lg md:text-2xl text-muted-foreground leading-relaxed">
+          Building modern web applications with
+          <span className="text-primary font-medium">
+            {" "}ASP.NET Core
+          </span>,
+          <span className="text-primary font-medium">
+            {" "}React
+          </span>
+          {" "}and
+          <span className="text-primary font-medium">
+            {" "}SQL Server
+          </span>
+          .
+        </p>
 
-              <a
-                href="https://github.com/TU_USUARIO"
-                target="_blank"
-                rel="noreferrer"
-                className="px-5 py-3 rounded-full border border-primary/30 hover:border-primary transition-all duration-300 hover:shadow-lg"
-              >
-                GitHub
-              </a>
+        {/* Main Buttons */}
+        <div className="mt-12 grid grid-cols-2 gap-4 max-w-md mx-auto">
+          <a
+            href="#projects"
+            className="
+              py-4
+              rounded-2xl
+              bg-cyan-500
+              hover:bg-cyan-400
+              text-white
+              font-semibold
+              shadow-lg
+              shadow-cyan-500/30
+              transition-all
+              duration-300
+            "
+          >
+            View Projects
+          </a>
 
-              <a
-                href="mailto:tu_correo@gmail.com"
-                className="px-5 py-3 rounded-full border border-primary/30 hover:border-primary transition-all duration-300 hover:shadow-lg"
-              >
-                Email
-              </a>
-            </div>
-          </div>
+          <a
+            href="/Ricardo-Garcia-CV.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="
+              py-4
+              rounded-2xl
+              border
+              border-primary/30
+              hover:border-primary
+              font-semibold
+              transition-all
+              duration-300
+            "
+          >
+            Download CV
+          </a>
+        </div>
 
-          {/* Right Column */}
-          <div className="flex justify-center md:justify-end order-1 md:order-2 opacity-0 animate-fade-in-delay-3">
-            <img
-              src="/Foto-Perfil.jpeg"
-              alt="Ricardo Garcia"
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-80 md:h-80 rounded-full object-cover border-4 border-primary/30 shadow-2xl"
-            />
-          </div>
+        {/* Social Buttons */}
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
+          <a
+            href="https://github.com/TU_USUARIO"
+            target="_blank"
+            rel="noreferrer"
+            className="
+              flex
+              items-center
+              gap-2
+              px-6
+              py-3
+              rounded-full
+              border
+              border-primary/20
+              hover:border-primary
+              transition-all
+              duration-300
+            "
+          >
+            <Github size={20} />
+            GitHub
+          </a>
+
+          <a
+            href="https://linkedin.com/in/TU_LINKEDIN"
+            target="_blank"
+            rel="noreferrer"
+            className="
+              flex
+              items-center
+              gap-2
+              px-6
+              py-3
+              rounded-full
+              border
+              border-primary/20
+              hover:border-primary
+              transition-all
+              duration-300
+            "
+          >
+            <Linkedin size={20} />
+            LinkedIn
+          </a>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <span className="text-sm text-primary font-semibold tracking-wider mb-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce">
+        <span className="text-sm text-primary font-semibold tracking-widest mb-2">
           EXPERIENCE
         </span>
 
