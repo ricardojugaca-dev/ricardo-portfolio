@@ -38,32 +38,33 @@ export const Navbar = () => {
 
   return (
     <nav
-        className={cn(
-          "fixed w-full z-40 transition-all duration-300",
-          isScrolled
-            ? "py-3 bg-background/60 backdrop-blur-xl backdrop-saturate-150 border-b border-white/10 shadow-lg"
-            : "py-5 bg-transparent"
-        )}
-      >
+      className={cn(
+        "fixed w-full z-40 transition-all duration-300",
+        isScrolled
+          ? "py-3 bg-background/60 backdrop-blur-xl backdrop-saturate-150 border-b border-white/10 shadow-lg"
+          : "py-5 bg-transparent"
+      )}
+    >
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <a
-          className="text-xl font-bold text-primary flex items-center"
+          className="text-xl font-bold flex items-center"
           href="#hero"
         >
-          <span className="text-primary/80 font-light ml-1">
-            <span className="text-foreground font-semibold tracking-wide"> RicardoDev </span>{" "}
-            Portfolio
+          <span className="font-light ml-1">
+            <span className="text-xl md:text-2xl animate-neon-logo tracking-wider">
+              RichCode
+            </span>
           </span>
         </a>
 
-        {/* desktop nav */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-10">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
-              className="relative text-foreground/70 hover:text-foreground transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+              className="navbar-link relative text-sm md:text-base transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
             >
               {item.name}
             </a>
@@ -71,7 +72,7 @@ export const Navbar = () => {
           <ThemeToggle />
         </div>
 
-        {/* mobile button */}
+        {/* Mobile Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="md:hidden p-2 rounded-md hover:bg-white/10 transition-colors text-foreground z-50"
@@ -80,7 +81,7 @@ export const Navbar = () => {
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* mobile menu */}
+        {/* Mobile Menu */}
         <div
           className={cn(
             "fixed inset-0 w-screen h-screen bg-background/90 backdrop-blur-xl z-[9999]",
@@ -90,7 +91,7 @@ export const Navbar = () => {
               : "opacity-0 pointer-events-none"
           )}
         >
-          {/* 🔴 BOTÓN X DENTRO DEL MENÚ */}
+          {/* BOTÓN X DENTRO DEL MENÚ */}
           <button
             onClick={() => setIsMenuOpen(false)}
             className="absolute top-6 right-6 text-foreground z-[10001]"
@@ -98,19 +99,19 @@ export const Navbar = () => {
             <X size={28} />
           </button>
 
-          <div className="flex flex-col space-y-8 text-xl">
+          <div className="flex flex-col space-y-8 text-xl text-center">
             {navItems.map((item, key) => (
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/70 hover:text-primary transition-colors duration-300  text-lg tracking-wide"
+                className="navbar-link text-lg tracking-wide transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
 
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-4">
               <ThemeToggle />
             </div>
           </div>

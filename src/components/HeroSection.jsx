@@ -46,23 +46,22 @@ export const HeroSection = () => {
   }, [roleIndex, typing]);
 
   const socials = [
-    { icon: <Github size={22} />, href: "https://github.com/TU_USUARIO", label: "GitHub" },
-    { icon: <Linkedin size={22} />, href: "https://linkedin.com/in/TU_LINKEDIN", label: "LinkedIn" },
-    { icon: <Youtube size={22} />, href: "https://youtube.com/@TU_CANAL", label: "YouTube" },
-    { icon: <Facebook size={22} />, href: "https://facebook.com/TU_FACEBOOK", label: "Facebook" },
-    { icon: <Mail size={22} />, href: "mailto:tu_correo@gmail.com", label: "Email" },
+    { icon: <Github size={20} />, href: "https://github.com/TU_USUARIO", label: "GitHub" },
+    { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/TU_LINKEDIN", label: "LinkedIn" },
+    { icon: <Youtube size={20} />, href: "https://youtube.com/@TU_CANAL", label: "YouTube" },
+    { icon: <Facebook size={20} />, href: "https://facebook.com/TU_FACEBOOK", label: "Facebook" },
+    { icon: <Mail size={20} />, href: "mailto:tu_correo@gmail.com", label: "Email" },
   ];
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-[80px] pb-[120px]"
+      className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-[80px] pb-[160px]"
     >
       {/* Background Orbes Flotantes */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.18)_0%,transparent_70%)] -top-[10%] -left-[15%] animate-[pulse_18s_ease-in-out_infinite]" />
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.12)_0%,transparent_70%)] -bottom-[5%] -right-[10%] animate-[pulse_22s_ease-in-out_infinite_3s]" />
-        <div className="absolute w-[350px] h-[350px] rounded-full bg-[radial-gradient(circle,rgba(79,70,229,0.14)_0%,transparent_70%)] top-[40%] left-[55%] animate-[pulse_14s_ease-in-out_infinite_6s]" />
       </div>
 
       {/* Grid Overlay Decorativo */}
@@ -108,7 +107,6 @@ export const HeroSection = () => {
               <span className="block text-lg md:text-2xl text-muted-foreground mb-4 font-normal">
                 Hi, I'm
               </span>
-              {/* NOMBRE CON EFECTO NEÓN FLUIDO DESDE TU ARCHIVO CSS */}
               <span className="block text-5xl sm:text-7xl md:text-8xl animate-neon-text font-black tracking-tight">
                 Ricardo Garcia
               </span>
@@ -127,29 +125,26 @@ export const HeroSection = () => {
             <span className="animate-[pulse_1s_infinite] text-violet-500">|</span>
           </motion.div>
 
-          {/* Descripción / Tagline */}
+          {/* NUEVO TEXTO DESCRIPTIVO SIMPLIFICADO */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="mt-6 max-w-3xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed"
+            className="mt-6 max-w-3xl mx-auto text-base md:text-xl text-muted-foreground leading-relaxed px-4 font-medium"
           >
-            Building modern web applications using{" "}
-            <span className="text-primary font-semibold">ASP.NET Core</span>,{" "}
-            <span className="text-primary font-semibold">React</span> and{" "}
-            <span className="text-primary font-semibold">SQL Server</span>. Passionate about creating scalable, efficient and user-friendly software solutions.
+            I build web and mobile products, from idea to production.
           </motion.p>
 
-          {/* BOTONES CON EFECTO NEÓN FLUIDO SINCRONIZADO */}
+          {/* Botones Principales */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="mt-8 flex flex-wrap justify-center gap-6"
+            className="mt-8 flex flex-row justify-center gap-3 sm:gap-6 max-w-md mx-auto px-2"
           >
             <a
               href="#projects"
-              className="px-10 py-4 rounded-xl text-sm md:text-base font-bold animate-neon-btn"
+              className="flex-1 text-center py-3.5 sm:py-4 rounded-xl text-xs sm:text-base font-bold animate-neon-btn whitespace-nowrap"
             >
               View Projects
             </a>
@@ -157,7 +152,7 @@ export const HeroSection = () => {
               href="/Ricardo-Garcia-CV.pdf"
               target="_blank"
               rel="noreferrer"
-              className="px-10 py-4 rounded-xl text-sm md:text-base font-bold animate-neon-btn"
+              className="flex-1 text-center py-3.5 sm:py-4 rounded-xl text-xs sm:text-base font-bold animate-neon-btn whitespace-nowrap"
             >
               Download CV
             </a>
@@ -168,7 +163,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.85 }}
-            className="mt-10 flex justify-center gap-4 flex-wrap"
+            className="mt-10 flex flex-row justify-center gap-3 sm:gap-4 flex-nowrap"
           >
             {socials.map((social) => (
               <a
@@ -177,7 +172,7 @@ export const HeroSection = () => {
                 target="_blank"
                 rel="noreferrer"
                 title={social.label}
-                className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary hover:scale-110 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
               >
                 {social.icon}
               </a>
@@ -186,12 +181,12 @@ export const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Indicador de Scroll Animado */}
+      {/* INDICADOR DE SCROLL AJUSTADO (MÁS ARRIBA EN PANTALLAS MÓVILES - bottom-16) */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center"
+        className="flex absolute bottom-16 left-1/2 -translate-x-1/2 flex-col items-center"
       >
         <span className="uppercase tracking-[8px] text-[10px] text-muted-foreground mb-1">
           Scroll

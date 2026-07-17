@@ -64,7 +64,8 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    /* Fondo cambiado a BLANCO ABSOLUTO (HSL de blanco) */
+    --background: 0 0% 100%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -160,34 +161,67 @@
   padding: 0;
   text-align: center;
 }
-/* ===== CUSTOM NEON FLOW EFFECTS ===== */
+
+
+/* ============================================================
+   CUSTOM NEON FLOW EFFECTS (LIGHT / DARK MODE)
+   ============================================================ */
+
+/* --- 1. MODO CLARO (Por defecto / Light Mode) --- */
+/* En modo claro evitamos resplandores excesivos para mantener la legibilidad */
 .animate-neon-text {
-  animation: neon-text-glow 6s ease-in-out infinite;
+  color: #6d28d9; /* Morado oscuro (violet-700) súper legible */
+  text-shadow: none;
+  transition: color 0.3s ease;
 }
 
 .animate-neon-btn {
-  animation: neon-box-glow 6s ease-in-out infinite;
-  background: rgba(0, 0, 0, 0.4); /* Fondo oscuro semitransparente por defecto */
-  border-width: 2px;
-  transition: all 0.3s ease-in-out; /* Transición suave para el hover */
+  background: #ffffff; /* Fondo blanco para los botones */
+  border: 2px solid #6d28d9;
+  color: #6d28d9;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
-/* EFECTO HOVER: Se ilumina completamente en morado con letras blancas */
+/* Hover en Modo Claro */
 .animate-neon-btn:hover {
-  animation: none; /* Detiene la animación temporalmente */
-  background: #7c3aed !important; /* Color morado de tu marca (--accent-purple) */
-  border-color: #a78bfa !important; /* Borde morado claro */
+  background: #6d28d9 !important; /* Fondo morado sólido */
   color: #ffffff !important; /* Letras blancas */
-  box-shadow: 0 0 25px rgba(124, 58, 237, 0.8), 0 0 50px rgba(124, 58, 237, 0.4) !important; /* Super resplandor morado */
-  transform: translateY(-3px) scale(1.05); /* Efecto de elevación sutil */
+  border-color: #6d28d9 !important;
+  box-shadow: 0 10px 15px -3px rgba(109, 40, 217, 0.3) !important;
+  transform: translateY(-3px) scale(1.05);
 }
 
-/* EFECTO CLICK (Active): Presionar el botón */
-.animate-neon-btn:active {
+
+/* --- 2. MODO OSCURO (Dark Mode activo) --- */
+/* Cuando el elemento superior tiene la clase 'dark', se activan las animaciones neón */
+.dark .animate-neon-text {
+  animation: neon-text-glow 6s ease-in-out infinite;
+}
+
+.dark .animate-neon-btn {
+  animation: neon-box-glow 6s ease-in-out infinite;
+  background: rgba(0, 0, 0, 0.4);
+  border-width: 2px;
+}
+
+/* Hover en Modo Oscuro */
+.dark .animate-neon-btn:hover {
+  animation: none !important;
+  background: #7c3aed !important; /* Morado vibrante */
+  border-color: #a78bfa !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.8), 0 0 50px rgba(124, 58, 237, 0.4) !important;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.dark .animate-neon-btn:active {
   transform: translateY(-1px) scale(1.02);
   box-shadow: 0 0 15px rgba(124, 58, 237, 0.6) !important;
 }
 
+
+/* --- Keyframes de las Animaciones Neón --- */
 @keyframes neon-text-glow {
   0%, 100% {
     color: #a78bfa;
@@ -210,4 +244,59 @@
     box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), inset 0 0 8px rgba(6, 182, 212, 0.1);
     color: #22d3ee;
   }
+}
+
+
+/* ============================================================
+   NAVBAR ADAPTATION (LIGHT / DARK MODE)
+   ============================================================ */
+
+/* --- 1. MODO CLARO (Light Mode por defecto) --- */
+
+/* El logo "RichCode" en modo claro (Morado oscuro, estático, sin animación) */
+.animate-neon-logo {
+  color: #6d28d9; 
+  animation: none; /* Desactivado por defecto */
+  text-shadow: none;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+/* Enlaces del menú en modo claro (Color negro/carbón súper legible) */
+.navbar-link, 
+nav a,
+header a {
+  color: #0f172a !important; /* Negro intenso */
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Hover de los enlaces en modo claro */
+.navbar-link:hover,
+nav a:hover,
+header a:hover {
+  color: #7c3aed !important; 
+}
+
+
+/* --- 2. MODO OSCURO (Dark Mode activo) --- */
+
+/* El logo "RichCode" recupera su animación neón brillante en modo oscuro */
+.dark .animate-neon-logo {
+  animation: neon-text-glow 6s ease-in-out infinite !important;
+}
+
+/* Los enlaces del menú vuelven a ser claros/blancos en modo oscuro */
+.dark .navbar-link,
+.dark nav a,
+.dark header a {
+  color: #f1f5f9 !important; /* Blanco/Gris claro */
+}
+
+/* Hover de los enlaces en modo oscuro */
+.dark .navbar-link:hover,
+.dark nav a:hover,
+.dark header a:hover {
+  color: #a78bfa !important;
+  text-shadow: 0 0 8px rgba(167, 139, 250, 0.5);
 }
